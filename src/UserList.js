@@ -24,7 +24,9 @@ export default function UserList() {
         </button>
         <>
           {loading
-            ? "loading..."
+            ? <div className='spinner-border' role='status'>
+            <span className='sr-only'></span>
+          </div>
             : isError
             ? "something went wrong"
             : userList.data &&
