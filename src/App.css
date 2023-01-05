@@ -1,7 +1,3 @@
 .App{text-align: center; }
-.navbar{margin: 1%;}
-.userdata{display: inline;;   width: 300px;  height: 250px;}
-.userdata .card{    align-items: center;}
-.userdata img{width: 150px;}
-.Allitems{display: flex;}
-.alluserlist{display: -webkit-inline-box;}
+.Userdetail{width: 25rem;
+    display: inline-grid;}

@@ -1,47 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import {actionCretors} from "./state/index"
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCretors } from "./state/index";
 export default function UserList() {
-  const [Users, fetchUsers] = useState([]); const dispatch =useDispatch();
-  const {fetchUsersdata} =bindActionCreators(actionCretors, dispatch);
-
-
- const  getData = () => {
-      fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((res) => {fetchUsers(res);
-      });
-  };
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.users.userListLoading);
+  const isError = useSelector((state) => state.users.isUserLoadingFail);
+  const userList = useSelector((state) => state.users.userList);
 
   // test comment
   useEffect(() => {
-    getData();
-
+    dispatch(actionCretors.getUserList());
   }, []);
 
   return (
     <div>
       <h1>Data From Api</h1>
-    
-     <div className="alluserlist">
-
-{Users.map((item) => (
-  <ul key={item.id}>
-      <button
-        className='btn btn-primary'
-        onClick={()=>{fetchUsersdata(item.id)
-        }}
-      >
-        {item.id}
-      </button>
- 
-  </ul>
-))}
-</div>
-      
-      
-      
+      <div>
+        <button
+          disabled={userList.page === 1}
+          onClick={() => dispatch(actionCretors.getUserList(userList.page - 1))}
+        >
+          First page
+        </button>
+        <>
+          {loading
+            ? "loading..."
+            : isError
+            ? "something went wrong"
+            : userList.data &&
+              userList.data.map((el) => (
+                <button
+                  key={el.id}
+                  className="btn btn-primary mx-2"
+                  onClick={() => {
+                    dispatch(actionCretors.getUserDetils(el.id));
+                  }}
+                >
+                  {el.id}
+                </button>
+              ))}
+        </>
+        <button
+          disabled={userList.page === userList.total_pages}
+          onClick={() => dispatch(actionCretors.getUserList(userList.page + 1))}
+        >
+          Next Page
+        </button>
+      </div>
     </div>
-  )
+  );
 }

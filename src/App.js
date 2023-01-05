@@ -1,17 +1,12 @@
-import './App.css';
-import Navbar from './Navbar';
-import User from './User';
-import UserList from './UserList';
-
+import "./App.css";
+import User from "./User";
+import UserList from "./UserList";
 
 function App() {
   return (
     <div className="App">
-
-   <Navbar/>
-
-<User/>
-<UserList/>
+      <User />
+      <UserList />
     </div>
   );
 }
