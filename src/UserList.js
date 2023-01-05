@@ -20,7 +20,7 @@ export default function UserList() {
           disabled={userList.page === 1}
           onClick={() => dispatch(actionCretors.getUserList(userList.page - 1))}
         >
-          First page
+          Previous page
         </button>
         <>
           {loading
