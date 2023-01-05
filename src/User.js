@@ -20,7 +20,7 @@ export default function User() {
         <div className='card'>
         <img src={user.data.avatar} className='card-img-top' alt='...'/>
         <div className='card-body'>
-          <h5 className='card-title'>{user.data.first_name}{user.data.last_name}</h5>
+          <h5 className='card-title'>{user.data.first_name}&nbsp;{user.data.last_name}</h5>
           <p className='card-text'>{user.support.text}</p>
         </div>
         <ul className='list-group list-group-flush'>
