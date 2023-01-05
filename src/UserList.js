@@ -22,7 +22,7 @@ export default function UserList() {
 
   return (
     <div>
-      <h1>user list from api</h1>
+      <h1>Data From Api</h1>
     
      <div className="alluserlist">
 

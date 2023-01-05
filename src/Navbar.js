@@ -5,7 +5,7 @@ export default function Navbar() {
   const amount = useSelector(state=>state.amount)
   const id = useSelector(state=>state.id)
   return (
-    <div className='cantainer'>
+    <div className='navbar'>
 <ul className='nav'>
   <li className='nav-item'>
     <a className='nav-link active' aria-current='page' href=''>Active</a>
